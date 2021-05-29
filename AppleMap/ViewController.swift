@@ -10,6 +10,7 @@ import MapKit
 
 class ViewController: UIViewController, CLLocationManagerDelegate {
     
+    @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var myMap: MKMapView!
     @IBOutlet weak var locationInfoLabel: UILabel!
     @IBOutlet weak var locationLabel: UILabel!
@@ -54,24 +55,46 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         // 위도와 경도의 값으로 주소 찾기
         CLGeocoder().reverseGeocodeLocation(pLocation!, completionHandler: {
             (placemark, erro) -> Void in
-            let pm = placemark!.first
-            let country = pm!.country
+            guard let pm = placemark?.first else { return }
+//            let pm = placemark!.first
+            let country = pm.country
             var address: String = country!
-            if pm!.locality != nil {
+            if pm.locality != nil {
                 address += " "
-                address += pm!.locality!
+                address += pm.locality!
             }
-            if pm!.thoroughfare != nil {
+            if pm.thoroughfare != nil {
                 address += " "
-                address += pm!.thoroughfare!
+                address += pm.thoroughfare!
             }
             self.locationInfoLabel.text = "현재 위치"
             self.locationLabel.text = address
         })
-        locationManager.stopUpdatingHeading()
+        
+        locationManager.stopUpdatingLocation()
     }
     
+    // 37.32902992914243, 127.09114772662738
+    // 37.50367880316756, 127.02691984653913
     @IBAction func changeLocationSg(_ sender: UISegmentedControl) {
+        if sender.selectedSegmentIndex == 0 {
+            self.locationInfoLabel.text = ""
+            self.locationLabel.text = ""
+            locationManager.startUpdatingLocation()
+            self.myMap.showsUserLocation = true
+            
+        } else if sender.selectedSegmentIndex == 1 {
+            setAnnotation(latitudeValue: 37.32902992914243, longitudeValue: 127.09114772662738, delta: 0.1, title: "우리집", subtitle: "경기도 용인시 수지구 수풍로47")
+            self.locationInfoLabel.text = "보고 계신 위치"
+            self.locationLabel.text = "우리집"
+            self.myMap.showsUserLocation = false
+        } else if sender.selectedSegmentIndex == 2 {
+            setAnnotation(latitudeValue: 37.50367880316756, longitudeValue: 127.02691984653913, delta: 0.1, title: "정돈 강남점", subtitle: "서울특별시 강남구 강남대로 110길 26")
+            self.locationInfoLabel.text = "보고 계신 위치"
+            self.locationLabel.text = "정돈 강남점"
+            self.myMap.showsUserLocation = false
+        }
+        
     }
     
 

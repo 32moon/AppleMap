@@ -63,6 +63,7 @@
                         <outlet property="locationInfoLabel" destination="AVh-zg-6ki" id="ukm-6b-Bw0"/>
                         <outlet property="locationLabel" destination="NSJ-en-y2n" id="Pt1-1V-OIm"/>
                         <outlet property="myMap" destination="Cll-Qi-oJ5" id="jpl-J6-Bll"/>
+                        <outlet property="segmentedControl" destination="MUq-Lr-X6j" id="je7-Yn-JsD"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

@@ -17,7 +17,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MUq-Lr-X6j">
-                                <rect key="frame" x="0.0" y="44" width="414" height="32"/>
+                                <rect key="frame" x="10" y="44" width="394" height="32"/>
                                 <segments>
                                     <segment title="현재위치"/>
                                     <segment title="우리집"/>
@@ -50,11 +50,11 @@
                             <constraint firstItem="Cll-Qi-oJ5" firstAttribute="top" secondItem="MUq-Lr-X6j" secondAttribute="bottom" constant="10" id="8sQ-Jf-SgU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="NSJ-en-y2n" secondAttribute="bottom" constant="60" id="EVq-U0-ntN"/>
                             <constraint firstItem="NSJ-en-y2n" firstAttribute="leading" secondItem="AVh-zg-6ki" secondAttribute="leading" id="IcJ-vL-RBX"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MUq-Lr-X6j" secondAttribute="trailing" id="Q8b-SL-XUr"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="MUq-Lr-X6j" secondAttribute="trailing" constant="10" id="Q8b-SL-XUr"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="Cll-Qi-oJ5" secondAttribute="trailing" constant="10" id="UXr-wJ-rGr"/>
                             <constraint firstItem="MUq-Lr-X6j" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="XSE-YV-BGg"/>
                             <constraint firstItem="Cll-Qi-oJ5" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="mPD-Nj-7NO"/>
-                            <constraint firstItem="MUq-Lr-X6j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="rzB-3k-dtt"/>
+                            <constraint firstItem="MUq-Lr-X6j" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="10" id="rzB-3k-dtt"/>
                             <constraint firstItem="NSJ-en-y2n" firstAttribute="top" secondItem="AVh-zg-6ki" secondAttribute="bottom" constant="15" id="xAp-dd-pEk"/>
                             <constraint firstItem="AVh-zg-6ki" firstAttribute="top" secondItem="Cll-Qi-oJ5" secondAttribute="bottom" constant="20" id="xlZ-hA-JHT"/>
                         </constraints>

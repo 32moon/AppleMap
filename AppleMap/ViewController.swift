@@ -30,17 +30,27 @@ class ViewController: UIViewController, CLLocationManagerDelegate {
         myMap.showsUserLocation = true
     }
     // 위도, 경도로 위치 표시
-    func goLocation(latitudeValue: CLLocationDegrees, longitudeValue: CLLocationDegrees, delta span: Double) {
+    func goLocation(latitudeValue: CLLocationDegrees, longitudeValue: CLLocationDegrees, delta span: Double) -> CLLocationCoordinate2D {
         let pLocation = CLLocationCoordinate2DMake(latitudeValue, longitudeValue)
         let spanValue = MKCoordinateSpan(latitudeDelta: span, longitudeDelta: span)
         let pRegion = MKCoordinateRegion(center: pLocation, span: spanValue)
         
         myMap.setRegion(pRegion, animated: true)
+        return pLocation
     }
+    // 핀 설치하기
+    func setAnnotation(latitudeValue: CLLocationDegrees, longitudeValue: CLLocationDegrees, delta span: Double, title strTitle: String, subtitle strSubtitle: String) {
+        let annotation = MKPointAnnotation()
+        annotation.coordinate = goLocation(latitudeValue: latitudeValue, longitudeValue: longitudeValue, delta: span)
+        annotation.title = strTitle
+        annotation.subtitle = strSubtitle
+        myMap.addAnnotation(annotation)
+    }
+    
     // 위치가 업데이트 되었을 때 지도에 위치 표시
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         let pLocation = locations.last
-        goLocation(latitudeValue: (pLocation?.coordinate.latitude)!, longitudeValue: (pLocation?.coordinate.longitude)!, delta: 0.01)
+        _ = goLocation(latitudeValue: (pLocation?.coordinate.latitude)!, longitudeValue: (pLocation?.coordinate.longitude)!, delta: 0.01)
         // 위도와 경도의 값으로 주소 찾기
         CLGeocoder().reverseGeocodeLocation(pLocation!, completionHandler: {
             (placemark, erro) -> Void in
